@@ -1,0 +1,22 @@
+import requests
+
+
+def get_pokemon_info(name):
+    '''
+    Gets a dictionary of information from the POKEAPI for a specified pokemon
+    
+    :param name: Pokemons name
+    '''
+
+    print('Getting Pokemon Information...', end='')
+
+    URL = 'https://pokeapi.co/api/v2/pokemon/' + str(name)
+    response = requests.get(URL)
+
+    if response.status_code == 200:
+            print('Success')
+            return response.json() # Convert response body to a dictionary
+    else:
+        print('Failed. Response code:', response.status_code)
+        return
+
